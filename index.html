@@ -1,10 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>AK Chatbot</title>
   <link rel="shortcut icon" type="image/x-icon" href="logo.jpg" />
   <style>
-    .chatbot {
+body {
+  margin: 0;
+}
+
+html, body {
+  height: 96%;
+}
+
+.chatbot {
   font-family: Arial, sans-serif;
   border: 2px solid #ccc;
   border-radius: 5px;
@@ -12,6 +22,9 @@
   max-width: 400px;
   margin: 0 auto;
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
 }
 
 .chatbot-header {
@@ -26,7 +39,7 @@
 }
 
 .chatbot-messages {
-  height: 300px;
+  flex: 1;
   overflow-y: auto;
   margin-bottom: 20px;
 }
@@ -51,6 +64,7 @@
 .chatbot-input {
   display: flex;
   align-items: center;
+  margin-top: auto;
 }
 
 .chatbot-input input[type="text"] {
@@ -87,7 +101,28 @@
   background-color: #d32f2f;
 }
 
+/* Media query for smaller screens */
+@media (max-width: 600px) {
+  .chatbot {
+    max-width: 90%;
+    max-height: 100vh;
+  }
+
+  .chatbot-messages {
+    max-height: calc(100vh - 300px);
+    overflow-y: scroll;
+  }
+
+  .message {
+    max-width: 100%;
+  }
+}
+
+
+
   </style>
+
+
 </head>
 <body>
   <div class="chatbot">
