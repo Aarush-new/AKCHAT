@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>AK Chatbot</title>
+  <link rel="shortcut icon" type="image/x-icon" href="logo.jpg" />
+  <style>
+    .chatbot {
+  font-family: Arial, sans-serif;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  padding: 20px;
+  max-width: 400px;
+  margin: 0 auto;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.chatbot-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.chatbot-header h1 {
+  margin: 0;
+}
+
+.chatbot-messages {
+  height: 300px;
+  overflow-y: auto;
+  margin-bottom: 20px;
+}
+
+.message {
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  max-width: 80%;
+}
+
+.message-user {
+  background-color: #e6f2ff;
+  align-self: flex-end;
+}
+
+.message-bot {
+  background-color: #f2f2f2;
+  align-self: flex-start;
+}
+
+.chatbot-input {
+  display: flex;
+  align-items: center;
+}
+
+.chatbot-input input[type="text"] {
+  flex-grow: 1;
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  margin-right: 10px;
+}
+
+.chatbot-input button {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #4CAF50;
+  color: #fff;
+  cursor: pointer;
+}
+
+.chatbot-input button:hover {
+  background-color: #3e8e41;
+}
+
+#clear-btn {
+  padding: 10px;
+  border-radius: 5px;
+  border: none;
+  background-color: #f44336;
+  color: #fff;
+  cursor: pointer;
+}
+
+#clear-btn:hover {
+  background-color: #d32f2f;
+}
+
+  </style>
+</head>
+<body>
+  <div class="chatbot">
+    <div class="chatbot-header">
+      <h1>A.K Chatbot</h1>
+      <button id="clear-btn">Clear Chat</button>
+    </div>
+    <div class="chatbot-messages"></div>
+    <div class="chatbot-input">
+      <input type="text" placeholder="Type your message here" id="user-input">
+      <button id="send-btn">Send</button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const messages = document.querySelector('.chatbot-messages');
+      const userInput = document.getElementById('user-input');
+      const sendButton = document.getElementById('send-btn');
+      const clearButton = document.getElementById('clear-btn');
+      
+      function sendMessage() {
+        const userMessage = userInput.value.toLowerCase();
+        if (userMessage.trim() === '') {
+          return;
+        }
+        messages.innerHTML += '<div class="message message-user">' + userMessage + '</div>';
+        userInput.value = '';
+        generateResponse(userMessage);
+      }
+
+	  function generateResponse(message) {
+		let response;
+		const apiKey = 'AIzaSyAJxsequK_PzD1BGf5J1PpKTO8wSSqYkDI'; // Replace with your Google Search API key
+  		const cx = 'b695bb144b51e4f8d'; // Replace with your Google Search CX ID
+		if (message.includes('hello')) {
+			response = 'Hello there!';
+		} else if (message.includes('how are you')) {
+			response = 'I am doing well, thank you for asking!';
+		} else if (message.includes('what is your name')) {
+			response = 'My name is Chatbot.';
+		} else if (message.includes('thanks')) {
+			response = 'Your Welcome.';
+		} else if (message.includes('thx')) {
+			response = 'Your Welcome.';
+		} else if (message.includes('thank')) {
+			response = 'Your Welcome.';
+		} else if (message.includes('tallest mountain')) {
+			response = 'The tallest mountain in the world is Mount Everest.';
+		} else if (message.includes('currency of japan')) {
+			response = 'The currency of Japan is the yen.';
+		} else if (message.includes('great barrier reef')) {
+			response = 'The Great Barrier Reef is located in Australia.';
+		} else if (message.includes('largest country in the world')) {
+			response = 'The largest country in the world by area is Russia.';
+		} else if (message.includes('currency of the united kingdom')) {
+			response = 'The currency of the United Kingdom is the pound sterling.';
+		} else if (message.includes('highest waterfall in the world')) {
+			response = 'The highest waterfall in the world is Angel Falls in Venezuela.';
+		} else if (message.includes('largest desert in the world')) {
+			response = 'The largest desert in the world is the Sahara Desert in Africa.';
+		} else if (message.includes('longest river in the world')) {
+			response = 'The longest river in the world is the Nile in Africa.';
+		} else if (message.includes('what is the capital of france')) {
+			response = 'The capital of France is Paris.';
+		} else if (message.includes('what is the capital of spain')) {
+			response = 'The capital of Spain is Madrid.';
+		} else if (message.includes('what is the capital of china')) {
+			response = 'The capital of China is Beijing.';
+		} else if (message.includes('what is the capital of russia')) {
+			response = 'The capital of Russia is Moscow.';
+		} else if (message.includes('what is the capital of india')) {
+			response = 'The capital of India is New Delhi.';
+		} else if (message.includes('what is the capital of usa')) {
+			response = 'The capital of the USA is Washington D.C.';
+		} else if (message.includes('who is the president of usa')) {
+			response = 'The current President of the USA is Joe Biden.';
+		} else if (message.includes('who is the prime minister of india')) {
+			response = 'The current Prime Minister of India is Narendra Modi.';
+		} else if (message.includes('what is the population of china')) {
+			response = 'The population of China is approximately 1.4 billion people.';
+		} else if (message.includes('what is the population of india')) {
+			response = 'The population of India is approximately 1.3 billion people.';
+		} else if (message.includes('what is the population of usa')) {
+			response = 'The population of the USA is approximately 331 million people.';
+		} else if (message.includes('what is the population of russia')) {
+			response = 'The population of Russia is approximately 144 million people.';
+		} else if (message.includes('what is the population of japan')) {
+			response = 'The population of Japan is approximately 126 million people.';
+		} else if (message.includes('what is the population of brazil')) {
+			response = 'The population of Brazil is approximately 213 million people.';
+		} else if (message.includes('what is the population of australia')) {
+			response = 'The population of Brazil is approximately 26 million people.';
+		} else if (message.includes('how old are you')) {
+			response = 'I was created in 2023, so technically I am still a baby!';
+		} else if (message.includes('what time is it')) {
+			const now = new Date();
+			const timeString = now.toLocaleTimeString();
+			response = `It is currently ${timeString}.`;
+		} else if (message.includes('what is the weather like')) {
+			response = 'I am sorry, I am not capable of providing real-time weather updates.';
+		} else if (message.includes('who are you')) {
+			response = 'I am an AI chatbot created by Aarush Kharkwal.';
+		} else if (message.includes('what is your purpose')) {
+			response = 'My purpose is to assist and provide information to users.';
+		} else if (message.includes('where are you from')) {
+			response = 'I do not have a physical location as I exist entirely in the digital realm.';
+		} else if (message.includes('how can I contact you')) {
+			response = 'You can contact me through this chat interface.';
+		} else if (message.includes('what is your favorite color')) {
+			response = 'As an AI, I do not have the ability to perceive or experience colors in the way that humans do.';
+		} else if (message.includes('can you help me with something')) {
+			response = 'Of course! Please let me know what you need help with.';
+		} else if (message.includes('what is the capital of France')) {
+			response = 'The capital of France is Paris.';
+		} else if (message.includes('how many planets are in the solar system')) {
+			response = 'There are eight planets in the solar system.';
+		} else if (message.includes('what is the largest mammal in the world')) {
+			response = 'The largest mammal in the world is the blue whale.';
+		} else if (message.includes('what is the longest word in the English language')) {
+			response = 'The longest word in the English language contains 189,819 letters and would take over three hours to pronounce.';
+		} else if (message.includes('what is the highest mountain in North America')) {
+			response = 'The highest mountain in North America is Denali (formerly known as Mount McKinley) in Alaska, with a height of 20,310 feet.';
+		} else {
+			const query = encodeURIComponent(message);
+			const url = `https://www.googleapis.com/customsearch/v1?key=${apiKey}&cx=${cx}&q=${query}`;
+
+			fetch(url)
+			.then(response => response.json())
+			.then(data => {
+				// Display the first search result to the user
+				const result = data.items[0].snippet;
+				messages.innerHTML += '<div class="message message-bot">' + result + '</div>';
+			})
+			.catch(error => {
+				console.error('Error fetching search results:', error);
+				response = 'I am not sure what you mean. Can you please rephrase your question?';
+				messages.innerHTML += '<div class="message message-bot">' + response + '</div>';
+			});
+
+			// Display a loading message to the user
+			response = '..........';
+
+				}
+		messages.innerHTML += '<div class="message message-bot">' + response + '</div>';
+}
+
+
+      function clearChat() {
+        messages.innerHTML = '';
+      }
+
+      sendButton.addEventListener('click', sendMessage);
+      userInput.addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+          sendMessage();
+        }
+      });
+      clearButton.addEventListener('click', clearChat);
+    });
+  </script>
+</body>
+</html>
